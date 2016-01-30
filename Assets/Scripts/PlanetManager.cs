@@ -34,7 +34,7 @@ public class PlanetManager : MonoBehaviour {
 			float x = this.radius * Mathf.Cos (angle * Mathf.Deg2Rad);
 			float y = this.radius * Mathf.Sin (angle * Mathf.Deg2Rad);
 
-			PlantManager plant = PlantManager.CreatePlant (this);
+			PlantManager plant = PlantManager.CreatePlant (this, i);
 			plant.transform.SetParent (this.transform);
 			plant.transform.Translate (new Vector3(x, y, 0));
 			plant.transform.Rotate (new Vector3(0, 0, angle-90));
@@ -46,6 +46,28 @@ public class PlanetManager : MonoBehaviour {
 		while(count-- > 0) {
 			this.Spawn ();
 		}
+	}
+
+	// Спаунит растение на свободном сеторе
+	public void Spawn() {
+		List<int> sectors = this.GetAvaliableSectors ();
+		if (sectors.Count > 0) {
+			int index = sectors [(int)Random.Range (0, sectors.Count - 1)];
+			PlantManager plant = this.plants [index];
+			plant.SetType (PlantManager.Type.Tree);
+		}
+	}
+
+	// Возвращает список свободных секторов
+	private List<int> GetAvaliableSectors() {
+		List<int> sectors = new List<int> ();
+		for (int i = 0; i < this.plantCount; i++) {
+			PlantManager plant = this.plants [i];
+			if (plant.IsNone ()) {
+				sectors.Add (i);
+			}
+		}
+		return sectors;
 	}
 	
 	// Обновление объекта на каждом кадре
@@ -97,38 +119,28 @@ public class PlanetManager : MonoBehaviour {
 
 		for (int i = 0; i < this.plantCount; i++) {
 			PlantManager plant = this.plants[i];
-	
 			plant.SetTemp (this.temps[i]);
 			plant.setSun (sun[i]);
 		}
 	}
 
-	public void Spawn() {
-		List<int> sectors = this.GetAvaliableSectors ();
-		if (sectors.Count > 0) {
-			int index = sectors [(int)Random.Range (0, sectors.Count - 1)];
-			PlantManager plant = this.plants [index];
-			plant.SetType (PlantManager.Type.Tree);
-		}
-	}
-
-	private List<int> GetAvaliableSectors() {
-		List<int> sectors = new List<int> ();
-		for (int i = 0; i < this.plantCount; i++) {
-			PlantManager plant = this.plants [i];
-			if (plant.IsNone ()) {
-				sectors.Add (i);
-			}
-		}
-		return sectors;
-	}
-
-	public int GetNearSector() {
+	// Возвращает индекс ближайшего сектора к солнцу
+	private int GetNearSector() {
 		float angle = (90 - this.transform.eulerAngles.z % 360);
 		if (angle < 0)
 			angle += 360;
 		int sector = (int) (angle / this.sectorAngle);
 		return sector;
+	}
+
+	// Событие распространения пожара от одного дерева
+	public void OnFire(int index) {
+		
+	}
+
+	// Событие падения кометы
+	public void OnComet(float angle) {
+		
 	}
 
 }
