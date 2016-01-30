@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21259684}
   - 61: {fileID: 6159752}
   - 114: {fileID: 11426632}
+  - 95: {fileID: 9509820}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -44,6 +45,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 2.87, y: 3.53}
+--- !u!95 &9509820
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130716}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11426632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf535c13121c5a047841c384585fd19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
 --- !u!212 &21259684
 SpriteRenderer:
   m_ObjectHideFlags: 1

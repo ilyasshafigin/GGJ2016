@@ -12,36 +12,36 @@ public class RotationEarth : MonoBehaviour {
 
 	void Update () {
 		//Мышь
-//		Vector2 mousePos = new Vector2(Input.mousePosition.x-Screen.width/2, Input.mousePosition.y-Screen.height/2);
-//		if (Input.GetMouseButtonDown(0) && !previousFrameMouseDown){
-//			previousMousePosition = mousePos;
-//			currentMousePosition = mousePos;
-//			previousFrameMouseDown = true;
-//		}
-//		else if (Input.GetMouseButton(0) && previousFrameMouseDown){
-//			previousMousePosition = currentMousePosition;
-//			currentMousePosition = mousePos;
-//		}
-//		else if (!Input.GetMouseButton(0)){
-//			previousFrameMouseDown = false;	
-//		}
-//		Vector2 previousPositionVector = previousMousePosition;	
-//		Vector2 currentPositionVector = currentMousePosition ;
-//		if (previousPositionVector != currentPositionVector && previousFrameMouseDown)		{
-//			float rotationAmount = ReturnSignedAngleBetweenVectors(previousPositionVector,
-//				currentPositionVector);
-//
-//			Earth.transform.RotateAroundLocal(Vector3.forward, rotationAmount * Time.deltaTime);
-//		}
+		Vector2 mousePos = new Vector2(Input.mousePosition.x-Screen.width/2, Input.mousePosition.y-Screen.height/2);
+		if (Input.GetMouseButtonDown(0) && !previousFrameMouseDown){
+			previousMousePosition = mousePos;
+			currentMousePosition = mousePos;
+			previousFrameMouseDown = true;
+		}
+		else if (Input.GetMouseButton(0) && previousFrameMouseDown){
+			previousMousePosition = currentMousePosition;
+			currentMousePosition = mousePos;
+		}
+		else if (!Input.GetMouseButton(0)){
+			previousFrameMouseDown = false;	
+		}
+		Vector2 previousPositionVector = previousMousePosition;	
+		Vector2 currentPositionVector = currentMousePosition ;
+		if (previousPositionVector != currentPositionVector && previousFrameMouseDown)		{
+			float rotationAmount = ReturnSignedAngleBetweenVectors(previousPositionVector,
+				currentPositionVector);
+
+			Earth.transform.RotateAroundLocal(Vector3.forward, rotationAmount * Time.deltaTime);
+		}
 		//Сенсор
-		if (Input.touchCount == 1) {
+		/*if (Input.touchCount == 1) {
 			Touch touch = Input.GetTouch (0);
 			if (touch.phase == TouchPhase.Began) {
 				previousTouchPosition = touch.position;
 				currentTouchPosition = touch.position;
 			} else if (touch.phase == TouchPhase.Moved) {
 				previousTouchPosition = currentTouchPosition;
-				currentTouchPosition = touch;
+				currentTouchPosition = touch.position;
 				drag = true;
 			} else {
 				drag = false;
@@ -52,7 +52,7 @@ public class RotationEarth : MonoBehaviour {
 				float rotationAmount = ReturnSignedAngleBetweenVectors(previousPositionVector2,currentPositionVector2);
 				Earth.transform.RotateAroundLocal(Vector3.forward, rotationAmount * Time.deltaTime);
 			}
-		}
+		}*/
 	}
     private float ReturnSignedAngleBetweenVectors(Vector2 vectorA, Vector2 vectorB)
 	{
