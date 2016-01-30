@@ -19,15 +19,17 @@ public class PlantManager : MonoBehaviour {
 	// Процесс роста от 0 до 1
 	private float growth;
 	// Скорость роста
-	private float growthSpeed = 0.001f;
+	private float growthSpeed = 0.01f;
 	// Процесс увядания от 0 до 1
 	private float withering;
 	// Скорость увядания
-	private float witheringSpeed = 0.005f;
+	private float witheringSpeed = 0.05f;
 	// Температура земли
 	private float temp;
 	// На солнечной стороне ли растение
 	private bool sun;
+
+	private PlanetManager planet;
 
 	// Метод инициализации при создании объекта из префаба
 	private void Awake () {
@@ -35,6 +37,10 @@ public class PlantManager : MonoBehaviour {
 		this.growth = 0.0f;
 		this.withering = 0.0f;
 		this.sun = false;
+	}
+
+	private void Initialize(PlanetManager planet) {
+		this.planet = planet;
 	}
 
 	// Устанавливает тип растению
@@ -80,12 +86,12 @@ public class PlantManager : MonoBehaviour {
 				this.withering += this.witheringSpeed;
 
 				if (this.withering >= 1.0f) {
-					//..
+					this.OnDie ();
 				}
 			}
 				
 			if (this.growth >= 1.0f) {
-				//...
+				this.OnDivide ();
 			}
 		} else {
 			if (this.withering < 1.0f) {
@@ -94,10 +100,20 @@ public class PlantManager : MonoBehaviour {
 		}
 	}
 
+	private void OnDivide() {
+		this.planet.Spawn();
+		this.planet.Spawn();
+	}
+
+	private void OnDie() {
+	
+	}
+
 	// Создает объект растения из префаба
-	public static PlantManager CreatePlant() {
+	public static PlantManager CreatePlant(PlanetManager planet) {
 		GameObject gameObject = (GameObject) Object.Instantiate (prefab);
 		PlantManager plant = gameObject.GetComponent<PlantManager> ();
+		plant.Initialize (planet);
 		return plant;
 	}
 

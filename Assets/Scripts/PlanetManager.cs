@@ -34,7 +34,7 @@ public class PlanetManager : MonoBehaviour {
 			float x = this.radius * Mathf.Cos (angle * Mathf.Deg2Rad);
 			float y = this.radius * Mathf.Sin (angle * Mathf.Deg2Rad);
 
-			PlantManager plant = PlantManager.CreatePlant ();
+			PlantManager plant = PlantManager.CreatePlant (this);
 			plant.transform.SetParent (this.transform);
 			plant.transform.Translate (new Vector3(x, y, 0));
 			plant.transform.Rotate (new Vector3(0, 0, angle-90));
@@ -42,7 +42,10 @@ public class PlanetManager : MonoBehaviour {
 		}
 
 		// Запускаем спаун первых растений
-		this.Spawn();
+		int count = 2;
+		while(count-- > 0) {
+			this.Spawn ();
+		}
 	}
 	
 	// Обновление объекта на каждом кадре
@@ -100,15 +103,12 @@ public class PlanetManager : MonoBehaviour {
 		}
 	}
 
-	private void Spawn() {
-		int count = 2;
-		while(count-- > 0) {
-			List<int> sectors = this.GetAvaliableSectors ();
-			if (sectors.Count > 0) {
-				int index = sectors [(int)Random.Range (0, sectors.Count - 1)];
-				PlantManager plant = this.plants [index];
-				plant.SetType (PlantManager.Type.Tree);
-			}
+	public void Spawn() {
+		List<int> sectors = this.GetAvaliableSectors ();
+		if (sectors.Count > 0) {
+			int index = sectors [(int)Random.Range (0, sectors.Count - 1)];
+			PlantManager plant = this.plants [index];
+			plant.SetType (PlantManager.Type.Tree);
 		}
 	}
 
