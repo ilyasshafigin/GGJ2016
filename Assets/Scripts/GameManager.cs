@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour {
 	public int scoresPerSecond = 2;
 
 	public PlanetManager planet;
+	public Text text;
 
 	// 
 	void Start () {
