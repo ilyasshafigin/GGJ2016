@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 586801309f6713944b4c4a7186ab827e
-timeCreated: 1454211281
+timeCreated: 1454223999
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -113,10 +113,10 @@ TextureImporter:
         serializedVersion: 2
         x: 832
         y: 0
-        width: 416.66666
+        width: 416.66663
         height: 432
       alignment: 7
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.49999985, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 4.787201, y: -0.026405334}
@@ -148,7 +148,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1664
         y: 0
-        width: 416.66666
+        width: 416.66675
         height: 432
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -167,10 +167,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2080
         y: 0
-        width: 416.66666
+        width: 416.66675
         height: 432
       alignment: 7
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5000003, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -7.0320435, y: 53.973595}
@@ -266,10 +266,10 @@ TextureImporter:
         serializedVersion: 2
         x: 4160
         y: 0
-        width: 416.66666
+        width: 416.6665
         height: 432
       alignment: 7
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.4999994, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 39.935913, y: 73.973595}
@@ -374,30 +374,25 @@ TextureImporter:
     - name: tree_14
       rect:
         serializedVersion: 2
-        x: 5824
+        x: 5840
         y: 0
-        width: 416.66666
+        width: 417
         height: 432
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 26.510254, y: 163.9736}
-        - {x: 18.510254, y: 165.9736}
-        - {x: -10.489746, y: 165.9736}
-        - {x: -25.489746, y: 141.9736}
-        - {x: -18.489746, y: 125.973595}
-        - {x: -7.489746, y: 115.973595}
-        - {x: -10.489746, y: 115.973595}
-        - {x: -24.489746, y: 130.9736}
-        - {x: -49.489746, y: 123.973595}
-        - {x: -61.489746, y: 98.973595}
-        - {x: -61.489746, y: 34.973595}
-        - {x: -21.489746, y: -0.026405334}
-        - {x: 22.510254, y: -0.026405334}
-        - {x: 86.510254, y: 56.973595}
-        - {x: 86.510254, y: 94.973595}
-        - {x: 85.510254, y: 98.973595}
+      - - {x: -10.436035, y: 165.9736}
+        - {x: -41.436035, y: 155.9736}
+        - {x: -68.436035, y: 110.973595}
+        - {x: -68.436035, y: 44.973595}
+        - {x: -42.436035, y: -0.026405334}
+        - {x: 45.563965, y: -0.026405334}
+        - {x: 81.563965, y: 20.973595}
+        - {x: 81.563965, y: 88.973595}
+        - {x: 77.563965, y: 97.973595}
+        - {x: 29.563965, y: 149.9736}
+        - {x: 15.563965, y: 165.9736}
     - name: tree_15
       rect:
         serializedVersion: 2

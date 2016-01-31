@@ -1,0 +1,452 @@
+fileFormatVersion: 2
+guid: 5dc18b92b8fcfb74ea067f01c1f841fc
+timeCreated: 1454237274
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DieMini_0
+    21300002: DieMini_1
+    21300004: DieMini_2
+    21300006: DieMini_3
+    21300008: DieMini_4
+    21300010: DieMini_5
+    21300012: DieMini_6
+    21300014: DieMini_7
+    21300016: DieMini_8
+    21300018: DieMini_9
+    21300020: DieMini_10
+    21300022: DieMini_11
+    21300024: DieMini_12
+    21300026: DieMini_13
+    21300028: DieMini_14
+    21300030: DieMini_15
+    21300032: DieMini_16
+    21300034: DieMini_17
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: DieMini_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 60.81936}
+        - {x: -40, y: 60.81936}
+        - {x: -40, y: 54.81936}
+        - {x: -33, y: 48.81936}
+        - {x: -14, y: 1.8193588}
+        - {x: 5, y: 1.8193588}
+        - {x: 5, y: 26.819359}
+        - {x: 0, y: 51.81936}
+    - name: DieMini_1
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2.722229, y: 60.81936}
+        - {x: -39.72223, y: 60.81936}
+        - {x: -39.72223, y: 56.81936}
+        - {x: -33.72223, y: 50.81936}
+        - {x: -14.722229, y: -0.18064117}
+        - {x: 10.277771, y: -0.18064117}
+        - {x: 15.277771, y: 27.819359}
+        - {x: 15.277771, y: 41.81936}
+        - {x: -0.722229, y: 58.81936}
+    - name: DieMini_2
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39.944458, y: 60.81936}
+        - {x: -39.944458, y: 24.819359}
+        - {x: -15.944458, y: -0.18064117}
+        - {x: 10.055542, y: -0.18064117}
+        - {x: 10.055542, y: 48.81936}
+        - {x: 8.055542, y: 60.81936}
+    - name: DieMini_3
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1.833313, y: 60.81936}
+        - {x: -40.166687, y: 60.81936}
+        - {x: -40.166687, y: 34.81936}
+        - {x: -24.166687, y: -0.18064117}
+        - {x: 8.833313, y: -0.18064117}
+        - {x: 9.833313, y: 0.8193588}
+        - {x: 10.833313, y: 23.819359}
+        - {x: 10.833313, y: 51.81936}
+    - name: DieMini_4
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40.888916, y: 58.81936}
+        - {x: -40.888916, y: 34.81936}
+        - {x: -22.888916, y: -0.18064117}
+        - {x: 11.111084, y: -0.18064117}
+        - {x: 11.111084, y: 55.81936}
+        - {x: 8.111084, y: 58.81936}
+    - name: DieMini_5
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7.388855, y: 55.81936}
+        - {x: -37.611145, y: 55.81936}
+        - {x: -37.611145, y: 29.819359}
+        - {x: -22.611145, y: -0.18064117}
+        - {x: 12.388855, y: -0.18064117}
+        - {x: 16.388855, y: 33.81936}
+        - {x: 16.388855, y: 48.81936}
+    - name: DieMini_6
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5.166626, y: 55.81936}
+        - {x: -2.833374, y: 55.81936}
+        - {x: -10.833374, y: 53.81936}
+        - {x: -29.833374, y: 49.81936}
+        - {x: -35.833374, y: 48.81936}
+        - {x: -35.833374, y: 29.819359}
+        - {x: -18.833374, y: -0.18064117}
+        - {x: 10.166626, y: -0.18064117}
+        - {x: 16.166626, y: 37.81936}
+        - {x: 16.166626, y: 44.81936}
+        - {x: 9.166626, y: 52.81936}
+    - name: DieMini_7
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5.944397, y: 55.81936}
+        - {x: -10.055603, y: 55.81936}
+        - {x: -34.055603, y: 34.81936}
+        - {x: -35.055603, y: 33.81936}
+        - {x: -35.055603, y: 21.819359}
+        - {x: -19.055603, y: -0.18064117}
+        - {x: 10.944397, y: -0.18064117}
+        - {x: 17.944397, y: 23.819359}
+        - {x: 17.944397, y: 41.81936}
+        - {x: 14.944397, y: 52.81936}
+    - name: DieMini_8
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.777832, y: 55.81936}
+        - {x: -34.777832, y: 30.819359}
+        - {x: -34.777832, y: 2.8193588}
+        - {x: -24.777832, y: -0.18064117}
+        - {x: 10.222168, y: -0.18064117}
+        - {x: 26.222168, y: 25.819359}
+        - {x: 26.222168, y: 37.81936}
+        - {x: 4.222168, y: 55.81936}
+    - name: DieMini_9
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.500061, y: 8.819359}
+        - {x: -36.50006, y: 2.8193588}
+        - {x: -36.50006, y: 0.8193588}
+        - {x: -35.50006, y: -0.18064117}
+        - {x: -12.500061, y: -0.18064117}
+        - {x: -12.500061, y: 4.819359}
+        - {x: -14.500061, y: 6.819359}
+        - {x: -17.500061, y: 8.819359}
+      - - {x: 12.499939, y: 37.81936}
+        - {x: 11.499939, y: 34.81936}
+        - {x: 11.499939, y: 24.819359}
+        - {x: 9.499939, y: 52.81936}
+        - {x: 7.499939, y: 55.81936}
+        - {x: -34.50006, y: 55.81936}
+        - {x: -34.50006, y: 20.819359}
+        - {x: -25.500061, y: -0.18064117}
+        - {x: 15.499939, y: -0.18064117}
+        - {x: 30.499939, y: 8.819359}
+        - {x: 30.499939, y: 18.819359}
+        - {x: 22.499939, y: 38.81936}
+    - name: DieMini_10
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.72229, y: 34.81936}
+        - {x: -36.72229, y: 34.81936}
+        - {x: -36.72229, y: -0.18064117}
+        - {x: -11.72229, y: -0.18064117}
+        - {x: -11.72229, y: 17.819359}
+        - {x: -14.72229, y: 27.819359}
+      - - {x: -11.72229, y: 55.81936}
+        - {x: -11.72229, y: -0.18064117}
+        - {x: 38.27771, y: -0.18064117}
+        - {x: 38.27771, y: 17.819359}
+        - {x: 22.27771, y: 55.81936}
+    - name: DieMini_11
+      rect:
+        serializedVersion: 2
+        x: 1925
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.944458, y: 55.81936}
+        - {x: -41.944458, y: 43.81936}
+        - {x: -41.944458, y: -0.18064117}
+        - {x: 38.055542, y: -0.18064117}
+        - {x: 38.055542, y: 19.819359}
+        - {x: 22.055542, y: 55.81936}
+    - name: DieMini_12
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30.833252, y: 16.819359}
+        - {x: 9.833252, y: 53.81936}
+        - {x: 2.833252, y: 56.81936}
+        - {x: -6.166748, y: 56.81936}
+        - {x: -14.166748, y: 47.81936}
+        - {x: -42.166748, y: 22.819359}
+        - {x: -42.166748, y: -0.18064117}
+        - {x: 39.833252, y: -0.18064117}
+        - {x: 41.833252, y: 3.8193588}
+        - {x: 38.833252, y: 7.819359}
+    - name: DieMini_13
+      rect:
+        serializedVersion: 2
+        x: 2275
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39.111084, y: 8.819359}
+        - {x: 32.111084, y: 16.819359}
+        - {x: 12.111084, y: 57.81936}
+        - {x: -28.888916, y: 57.81936}
+        - {x: -41.888916, y: 45.81936}
+        - {x: -41.888916, y: -0.18064117}
+        - {x: 39.111084, y: -0.18064117}
+        - {x: 41.111084, y: 0.8193588}
+        - {x: 42.111084, y: 4.819359}
+    - name: DieMini_14
+      rect:
+        serializedVersion: 2
+        x: 2450
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33.388794, y: 17.819359}
+        - {x: 10.388794, y: 52.81936}
+        - {x: -17.611206, y: 52.81936}
+        - {x: -41.611206, y: 13.819359}
+        - {x: -41.611206, y: -0.18064117}
+        - {x: 42.388794, y: -0.18064117}
+        - {x: 42.388794, y: 6.819359}
+        - {x: 41.388794, y: 10.819359}
+    - name: DieMini_15
+      rect:
+        serializedVersion: 2
+        x: 2625
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32.166626, y: 15.819359}
+        - {x: 7.166626, y: 33.81936}
+        - {x: -13.833374, y: 33.81936}
+        - {x: -41.833374, y: 10.819359}
+        - {x: -41.833374, y: 0.8193588}
+        - {x: -40.833374, y: -0.18064117}
+        - {x: 41.166626, y: -0.18064117}
+        - {x: 42.166626, y: 0.8193588}
+        - {x: 42.166626, y: 7.819359}
+        - {x: 41.166626, y: 9.819359}
+      - - {x: 1.166626, y: 41.81936}
+        - {x: 1.166626, y: 38.81936}
+        - {x: 6.166626, y: 34.81936}
+        - {x: 8.166626, y: 34.81936}
+        - {x: 10.166626, y: 35.81936}
+        - {x: 10.166626, y: 40.81936}
+        - {x: 7.166626, y: 44.81936}
+        - {x: 5.166626, y: 44.81936}
+    - name: DieMini_16
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 41.944336, y: 6.819359}
+        - {x: 29.944336, y: 25.819359}
+        - {x: -34.055664, y: 25.819359}
+        - {x: -42.055664, y: 21.819359}
+        - {x: -42.055664, y: -0.18064117}
+        - {x: 39.944336, y: -0.18064117}
+        - {x: 41.944336, y: 2.8193588}
+      - - {x: 3.944336, y: 32.81936}
+        - {x: -0.055664062, y: 29.819359}
+        - {x: -0.055664062, y: 26.819359}
+        - {x: 3.944336, y: 23.819359}
+        - {x: 7.944336, y: 23.819359}
+        - {x: 8.944336, y: 25.819359}
+        - {x: 8.944336, y: 30.819359}
+        - {x: 5.944336, y: 32.81936}
+    - name: DieMini_17
+      rect:
+        serializedVersion: 2
+        x: 2975
+        y: 0
+        width: 175
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32.222168, y: 17.819359}
+        - {x: -2.777832, y: 25.819359}
+        - {x: -25.777832, y: 25.819359}
+        - {x: -41.777832, y: 8.819359}
+        - {x: -41.777832, y: -0.18064117}
+        - {x: 40.222168, y: -0.18064117}
+        - {x: 41.222168, y: 0.8193588}
+        - {x: 42.222168, y: 3.8193588}
+        - {x: 42.222168, y: 5.819359}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

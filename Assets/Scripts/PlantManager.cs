@@ -16,7 +16,7 @@ public class PlantManager : MonoBehaviour {
 
 	// Состояния растения: ничего, рост, деление, увядание, увяло, засыхание, засохло, горит, сгорело
 	public enum State {
-		None, Growth, Divide, Withreing, WithreingDone, DryingUp, DryingUpDone, Burn, BurnDone, Explosion
+		None, Growth, Divide, Withreing, WithreingDone, DryingUp, DryingUpDone, Burn, BurnDone, Explosion, Die
 	}
 
 	// Тип растения
@@ -44,6 +44,10 @@ public class PlantManager : MonoBehaviour {
 	private float burn = 0.0f;
 	// Скорость горения
 	public float burnSpeed = 0.1f;
+	//
+	public float die = 0.0f;
+	//
+	public float dieSpeed = 0.4f;
 	// Температура земли
 	private float temp = 0.0f;
 	// На солнечной стороне ли растение
@@ -100,7 +104,7 @@ public class PlantManager : MonoBehaviour {
 			this.OnGrowth ();
 		}
 	}
-		
+
 	public bool IsNone() {
 		return this.type == Type.None;
 	}
@@ -145,7 +149,7 @@ public class PlantManager : MonoBehaviour {
 				// Если дерево освещено
 				if (this.sun) {
 					// то убираем прогресс увядания
-					this.withering -= this.witheringSpeed * Time.deltaTime;
+					this.withering -= 1.5f*this.witheringSpeed * Time.deltaTime;
 					// Если процесс полность убрали
 					if (this.withering <= 0.0f) {
 						this.withering = 0.0f;
@@ -165,6 +169,9 @@ public class PlantManager : MonoBehaviour {
 						// и запускаем событие
 						this.OnWitheringDone();
 					}
+					//if (this.growth <= 0.5f) {
+					//	this.growth += this.growthSpeed * Time.deltaTime;
+					//}
 				}
 				// Устанавливаем кадр анимации
 				this.animator.Play ("GrowthTree", 0, this.growth);
@@ -228,6 +235,7 @@ public class PlantManager : MonoBehaviour {
 		}
 		// Если дерево горит
 		case State.Burn: {
+				this.render.color = Color.white;
 				// Если объект на солнечной стороне
 				if (this.sun) {
 					// то продолжаем процесс горения
@@ -241,9 +249,7 @@ public class PlantManager : MonoBehaviour {
 					if (this.burn >= 1.0f) {
 						this.burn = 1.0f;
 						// то устанавливаем состояние полного сгорания
-						this.SetState (State.BurnDone);
-						// и запускаем событие
-						this.OnBurn ();
+						this.SetState (State.Die);
 					}
 				}
 				// Иначе
@@ -257,9 +263,35 @@ public class PlantManager : MonoBehaviour {
 						this.SetState (State.Growth);
 					}
 				}
-				// Устанавливаем кадр анимации
-				this.animator.Play ("GrowthTree", 0, this.growth);
-				this.render.color = Color.Lerp (this.burnColorFrom, this.burnColorTo, this.burn);
+
+				if (this.growth >= 0.4f) {
+					// Устанавливаем кадр анимации
+					this.animator.Play ("BurnTree", 0, this.burn);
+				} else {
+					// Устанавливаем кадр анимации
+					this.animator.Play ("BurnTreeMini", 0, this.burn);
+				}
+				//this.render.color = Color.Lerp (this.burnColorFrom, this.burnColorTo, this.burn);
+				break;
+		}
+		//
+		case State.Die: {
+				// 
+				this.die += this.dieSpeed * Time.deltaTime;
+				// 
+				if (this.die >= 1.0f) {
+					this.die = 1.0f;
+					// Устанавливаем состояние
+					this.OnDieDone();
+				}
+				// Управляем анимацией
+				if (this.growth >= 0.6f) {
+					this.animator.Play ("DieTree", 0, this.die);
+				} else if (this.growth >= 0.4f) {
+					this.animator.Play ("DieTreeMid", 0, this.die);
+				} else {
+					this.animator.Play ("DieTreeMMini", 0, this.die);
+				}
 				break;
 		}
 		default:
@@ -267,7 +299,7 @@ public class PlantManager : MonoBehaviour {
 		}
 
 		// Если температура большая
-		if (this.temp >= 1.0f && this.state != State.Divide && this.state != State.Explosion) {
+		if (this.temp >= 1.0f && this.state != State.Divide && this.state != State.Explosion && this.state != State.Die) {
 			// то устанавливаем состояние горения
 			this.SetState (State.Burn);
 		}
@@ -298,15 +330,20 @@ public class PlantManager : MonoBehaviour {
 		this.SetType (Type.None);
 	}
 
-	// Событие полного сгорания дерева
 	public void OnBurn() {
-		// Удаляем дерево
-		this.SetType (Type.None);
+		if (this.state != State.Die)
+			this.SetState (State.Burn);
 	}
 
 	// Событие распространения пожара
 	public void OnFire() {
 		this.planet.OnFire (this.index);
+	}
+
+	//
+	public void OnDieDone() {
+		// Удаляем дерево
+		this.SetType (Type.None);
 	}
 
 	// Делит растение на еще два

@@ -7,7 +7,9 @@ public class PlanetManager : MonoBehaviour {
 	// Количество растений/секторов
 	public int count = 36;
 	// Радиус планеты для определения положения растений
-	public float radius;
+	public float treeRadius;
+	//
+	public float effectRadius;
 	// Минимальное время появления растений
 	public float minSpawnTime = 3;
 	// Максимальное время появления растений
@@ -24,7 +26,7 @@ public class PlanetManager : MonoBehaviour {
 	// Массив температур, максимум - 1
 	private float[] temps;
 	// Значение повышения температуры за один кадр
-	private float tempSpeed = 0.01f;
+	public float tempSpeed = 0.005f;
 	// Угол одного сетора
 	private float sectorAngle;
 	// 
@@ -42,15 +44,15 @@ public class PlanetManager : MonoBehaviour {
 
 		for (int i = 0; i < this.count; i++) {
 			float angle = i * this.sectorAngle;
-			float x = this.radius * Mathf.Cos (angle * Mathf.Deg2Rad);
-			float y = this.radius * Mathf.Sin (angle * Mathf.Deg2Rad);
+			float x = this.effectRadius * Mathf.Cos (angle * Mathf.Deg2Rad);
+			float y = this.effectRadius * Mathf.Sin (angle * Mathf.Deg2Rad);
 
 			Vector3 translation = new Vector3 (x, y, 0);
 			Vector3 rotation = new Vector3 (0, 0, angle - 90);
 
 			PlantManager plant = PlantManager.CreatePlant (this, i);
 			plant.transform.SetParent (this.transform);
-			plant.transform.Translate (translation);
+			plant.transform.Translate (new Vector3(this.treeRadius * Mathf.Cos (angle * Mathf.Deg2Rad), this.treeRadius * Mathf.Sin (angle * Mathf.Deg2Rad)));
 			plant.transform.Rotate (rotation);
 			this.plants[i] = plant;
 
@@ -67,6 +69,8 @@ public class PlanetManager : MonoBehaviour {
 			grow.transform.Translate (translation);
 			grow.transform.Rotate (rotation);
 			this.grows[i] = grow;
+
+			this.temps [i] = 0.0f;
 		}
 
 		// Запускаем спаун первых растений
@@ -88,6 +92,7 @@ public class PlanetManager : MonoBehaviour {
 			PlantManager plant = this.plants [index];
 			plant.SetType (PlantManager.Type.Tree);
 			plant.SetState (PlantManager.State.Growth);
+			plant.SetGrowth (0.3f);
 			return plant;
 		} else {
 			return null;
@@ -115,7 +120,7 @@ public class PlanetManager : MonoBehaviour {
 		int area = this.count / 4;
 		bool[] sun = new bool[this.count];
 
-		this.temps [near] += this.tempSpeed;
+		this.temps [near] += this.tempSpeed * Time.deltaTime;
 		sun [near] = true;
 		for (int i = 1; i <= area; i++) {
 			int l = near - i;
@@ -134,7 +139,7 @@ public class PlanetManager : MonoBehaviour {
 			sun [r] = true;
 		}
 
-		this.temps [far] -= this.tempSpeed;
+		this.temps [far] -= 2.0f*this.tempSpeed * Time.deltaTime;
 		sun [far] = false;
 		for (int i = 1; i <= area; i++) {
 			int l = far - i;
@@ -147,8 +152,8 @@ public class PlanetManager : MonoBehaviour {
 			if (r >= this.count)
 				r -= this.count;
 
-			this.temps [l] -= this.tempSpeed * c;
-			this.temps [r] -= this.tempSpeed * c;
+			this.temps [l] -= 2.0f*this.tempSpeed * c;
+			this.temps [r] -= 2.0f*this.tempSpeed * c;
 			sun [l] = false;
 			sun [r] = false;
 		}
@@ -159,12 +164,18 @@ public class PlanetManager : MonoBehaviour {
 			plant.SetSun (sun[i]);
 		}
 
+		int treeCount = this.getTreeCount ();
+
+		if (treeCount == 0) {
+			GameManager.instance.GameOver ();
+			return;
+		}
 		// Добавляем очки
 		this.scoreDeltaTime += Time.deltaTime;
 		if (this.scoreDeltaTime >= 1.0f) {
 			this.scoreDeltaTime = 0.0f;
 
-			GameManager.instance.AddScore (this.getTreeCount());
+			GameManager.instance.AddScore (treeCount);
 		}
 	}
 

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CometManager : MonoBehaviour {
 
+
 	// Минимальное время респауна
 	public float minTimeSpawn = 3;
 	// Максимально время респауна
@@ -17,6 +18,8 @@ public class CometManager : MonoBehaviour {
 	private float angle;
 	private float elapsedTime;
 	private float deltaTime;
+
+	public AudioClip clip;
 
 	// Инициализация
 	void Start () {
@@ -55,6 +58,8 @@ public class CometManager : MonoBehaviour {
 		if (planet != null) {
 			// Запускаем событие
 			planet.OnComet(this.angle, this.size);
+			//
+			this.GetComponent<AudioSource> ().PlayOneShot (this.clip, 1.0f);
 			// Деактивируем комету
 			Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
 			body.velocity = Vector2.zero;

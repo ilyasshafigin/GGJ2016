@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class StartScript : MonoBehaviour {
 	private float delTime=0;
@@ -11,7 +12,7 @@ public class StartScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey(KeyCode.Mouse0))
-			Application.LoadLevel (0);
+		if (Input.GetKey (KeyCode.Mouse0) || Input.touches.Length != 0)
+			SceneManager.LoadScene ("Scene");
 	}
 }
