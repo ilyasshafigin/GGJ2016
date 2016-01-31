@@ -3,22 +3,28 @@ using System.Collections;
 
 public class CometManager : MonoBehaviour {
 
+	// Минимальное время респауна
 	public float minTimeSpawn = 3;
+	// Максимально время респауна
 	public float maxTimeSpawn = 5;
-	public float force = 10000f;
+	// Сила, с которой летит камета
+	public float force = 200;
+	// Радиус, на котором появляются кометы
 	public float radius = 10;
+	// Размер кометы в секторах
+	public int size = 1;
 
 	private float angle;
 	private float elapsedTime;
 	private float deltaTime;
 
-	// Use this for initialization
+	// Инициализация
 	void Start () {
 		this.elapsedTime = Random.Range (this.minTimeSpawn, this.maxTimeSpawn);
 		this.deltaTime = 0.0f;
 	}
 	
-	// Update is called once per frame
+	// Обновление на каждом кадру
 	void Update () {
 		this.deltaTime += Time.deltaTime;
 		if (this.deltaTime >= this.elapsedTime) {
@@ -30,24 +36,25 @@ public class CometManager : MonoBehaviour {
 		}
 	}
 
+	// Респаун кометы
 	private void Spawn() {
-		this.gameObject.SetActive (true);
-
-		this.angle = Random.Range (0, 360) * Mathf.Deg2Rad;
-		this.transform.position =  new Vector3 (this.radius*Mathf.Cos(angle), this.radius*Mathf.Sin(angle), 0);
-		this.transform.rotation = Quaternion.AngleAxis(angle*Mathf.Rad2Deg+90, Vector3.forward);
+		// Устанавливаем угол прилета кометы
+		this.angle = Random.Range (0, 360);
+		this.transform.position =  new Vector3 (this.radius*Mathf.Cos(angle * Mathf.Deg2Rad), this.radius*Mathf.Sin(angle * Mathf.Deg2Rad), 0);
+		this.transform.rotation = Quaternion.AngleAxis(angle+90, Vector3.forward);
 
 		Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
 		body.velocity = Vector2.zero;
-		body.AddForce (new Vector2(-Mathf.Cos(angle), -Mathf.Sin(angle)) * this.force);
+		body.AddForce (new Vector2(-Mathf.Cos(angle * Mathf.Deg2Rad), -Mathf.Sin(angle * Mathf.Deg2Rad)) * this.force);
 	}
 
 	// Событие столкновения кометы с объектами
 	private void OnTriggerEnter2D(Collider2D collider) {
 		// Если комента столкнулась с планетой
-		if (collider.gameObject.name == "Planet") {
+		PlanetManager planet = collider.GetComponent<PlanetManager>();
+		if (planet != null) {
 			// Запускаем событие
-			collider.gameObject.SendMessage("OnComet", this.angle);
+			planet.OnComet(this.angle, this.size);
 			// Деактивируем комету
 			Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
 			body.velocity = Vector2.zero;

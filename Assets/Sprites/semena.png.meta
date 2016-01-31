@@ -1,0 +1,305 @@
+fileFormatVersion: 2
+guid: 1888a24dce3ca354c90dc7ef99230bba
+timeCreated: 1454211290
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: semena_0
+    21300002: semena_1
+    21300004: semena_2
+    21300006: semena_3
+    21300008: semena_4
+    21300010: semena_5
+    21300012: semena_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: semena_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 170
+        height: 177
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: 162}
+        - {x: -8, y: 155}
+        - {x: -52, y: 117}
+        - {x: -52, y: 77}
+        - {x: -24, y: 0}
+        - {x: 15, y: 0}
+        - {x: 55, y: 26}
+        - {x: 55, y: 162}
+      - - {x: -32, y: 168}
+        - {x: -37, y: 166}
+        - {x: -37, y: 149}
+        - {x: -26, y: 143}
+        - {x: -6, y: 143}
+        - {x: -6, y: 157}
+        - {x: -10, y: 168}
+    - name: semena_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 170
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 43, y: 6.5}
+        - {x: 38, y: 2.5}
+        - {x: 25, y: 51.5}
+        - {x: 23, y: 57.5}
+        - {x: 20, y: 56.5}
+        - {x: 6, y: 65.5}
+        - {x: 3, y: 66.5}
+        - {x: -8, y: 66.5}
+        - {x: -52, y: 47.5}
+        - {x: -52, y: -63.5}
+        - {x: -23, y: -88.5}
+        - {x: 13, y: -88.5}
+        - {x: 55, y: -26.5}
+        - {x: 55, y: 8.5}
+        - {x: 53, y: 11.5}
+      - - {x: 41, y: 81.5}
+        - {x: 30, y: 73.5}
+        - {x: 30, y: 62.5}
+        - {x: 38, y: 58.5}
+        - {x: 60, y: 58.5}
+        - {x: 65, y: 64.5}
+        - {x: 65, y: 72.5}
+        - {x: 55, y: 81.5}
+      - - {x: -63, y: 87.5}
+        - {x: -73, y: 83.5}
+        - {x: -73, y: 71.5}
+        - {x: -66, y: 64.5}
+        - {x: -47, y: 64.5}
+        - {x: -38, y: 68.5}
+        - {x: -38, y: 81.5}
+        - {x: -44, y: 87.5}
+    - name: semena_2
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 170
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55, y: -7.5}
+        - {x: 41, y: 15.5}
+        - {x: 26, y: 55.5}
+        - {x: 4, y: 66.5}
+        - {x: -2, y: 66.5}
+        - {x: -6, y: 58.5}
+        - {x: -52, y: 19.5}
+        - {x: -52, y: -22.5}
+        - {x: -19, y: -88.5}
+        - {x: 12, y: -88.5}
+        - {x: 12, y: -56.5}
+        - {x: 48, y: -25.5}
+        - {x: 55, y: -15.5}
+      - - {x: 72, y: 73.5}
+        - {x: 54, y: 73.5}
+        - {x: 52, y: 72.5}
+        - {x: 52, y: 57.5}
+        - {x: 64, y: 47.5}
+        - {x: 80, y: 47.5}
+        - {x: 82, y: 52.5}
+        - {x: 82, y: 58.5}
+        - {x: 80, y: 64.5}
+      - - {x: -54, y: 76.5}
+        - {x: -69, y: 76.5}
+        - {x: -79, y: 66.5}
+        - {x: -79, y: 51.5}
+        - {x: -75, y: 50.5}
+        - {x: -60, y: 50.5}
+        - {x: -52, y: 58.5}
+        - {x: -49, y: 66.5}
+        - {x: -49, y: 73.5}
+    - name: semena_3
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 0
+        width: 170
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 66.5}
+        - {x: -36, y: 66.5}
+        - {x: -53, y: 31.5}
+        - {x: -53, y: -2.5}
+        - {x: -46, y: -71.5}
+        - {x: -15, y: -88.5}
+        - {x: 38, y: -88.5}
+        - {x: 54, y: -37.5}
+        - {x: 54, y: 8.5}
+        - {x: 38, y: 45.5}
+      - - {x: 61, y: 36.5}
+        - {x: 61, y: 16.5}
+        - {x: 66, y: 5.5}
+        - {x: 85, y: 5.5}
+        - {x: 85, y: 33.5}
+        - {x: 76, y: 36.5}
+      - - {x: -77, y: 40.5}
+        - {x: -85, y: 32.5}
+        - {x: -85, y: 9.5}
+        - {x: -74, y: 9.5}
+        - {x: -61, y: 21.5}
+        - {x: -61, y: 40.5}
+    - name: semena_4
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 0
+        width: 170
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 50, y: -12.5}
+        - {x: 47, y: 1.5}
+        - {x: 45, y: 7.5}
+        - {x: 38, y: 3.5}
+        - {x: 33, y: -9.5}
+        - {x: 42, y: 54.5}
+        - {x: 28, y: 66.5}
+        - {x: -16, y: 66.5}
+        - {x: -52, y: 34.5}
+        - {x: -52, y: -12.5}
+        - {x: -28, y: -88.5}
+        - {x: 16, y: -88.5}
+        - {x: 55, y: -16.5}
+        - {x: 55, y: -11.5}
+        - {x: 53, y: -11.5}
+      - - {x: 74, y: -10.5}
+        - {x: 65, y: -10.5}
+        - {x: 62, y: -14.5}
+        - {x: 62, y: -32.5}
+        - {x: 63, y: -39.5}
+        - {x: 72, y: -43.5}
+        - {x: 83, y: -43.5}
+        - {x: 85, y: -37.5}
+        - {x: 85, y: -17.5}
+        - {x: 78, y: -11.5}
+      - - {x: -83, y: -7.5}
+        - {x: -85, y: -15.5}
+        - {x: -85, y: -39.5}
+        - {x: -84, y: -40.5}
+        - {x: -72, y: -40.5}
+        - {x: -61, y: -35.5}
+        - {x: -61, y: -14.5}
+        - {x: -64, y: -7.5}
+    - name: semena_5
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 0
+        width: 170
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -74, y: -60.5}
+        - {x: -78, y: -61.5}
+        - {x: -85, y: -70.5}
+        - {x: -85, y: -86.5}
+        - {x: -84, y: -88.5}
+        - {x: -67, y: -88.5}
+        - {x: -63, y: -84.5}
+        - {x: -63, y: -68.5}
+        - {x: -70, y: -60.5}
+      - - {x: -17, y: 67.5}
+        - {x: -53, y: 27.5}
+        - {x: -53, y: -4.5}
+        - {x: -22, y: -88.5}
+        - {x: 16, y: -88.5}
+        - {x: 54, y: -58.5}
+        - {x: 54, y: 67.5}
+      - - {x: 74, y: -66.5}
+        - {x: 69, y: -66.5}
+        - {x: 63, y: -74.5}
+        - {x: 63, y: -88.5}
+        - {x: 85, y: -88.5}
+        - {x: 85, y: -75.5}
+        - {x: 79, y: -68.5}
+    - name: semena_6
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 0
+        width: 170
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 66.5}
+        - {x: -54, y: 16.5}
+        - {x: -54, y: -14.5}
+        - {x: -51, y: -25.5}
+        - {x: -31, y: -46.5}
+        - {x: -15, y: -88.5}
+        - {x: 13, y: -88.5}
+        - {x: 53, y: -62.5}
+        - {x: 53, y: 66.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

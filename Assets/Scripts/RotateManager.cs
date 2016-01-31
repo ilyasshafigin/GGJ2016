@@ -10,7 +10,7 @@ public class RotateManager : MonoBehaviour {
 	//private GameObject line = null;
 
 
-	// Use this for initialization
+	// Инициализация
 	void Start () {
 		this.joint = this.GetComponent<TargetJoint2D> ();
 
@@ -19,6 +19,7 @@ public class RotateManager : MonoBehaviour {
 		//this.line.transform.parent = this.transform.parent;
 	}
 
+	// Событие нажатия кнопки мыши
 	void OnMouseDown() {
 		Vector3 p = this.GetMousePosition ();
 		this.prevAngle = Mathf.Atan2 (p.y, p.x);
@@ -27,23 +28,24 @@ public class RotateManager : MonoBehaviour {
 		this.joint.enabled = true;
 	}
 
+	// Событие перемещения мыши при нажатой кнопке
 	void OnMouseDrag() {
 		Vector3 p = this.GetMousePosition ();
-		
 		this.joint.target = new Vector2(p.x, p.y);
 	}
 
+	// Событие отпускания кнопки мыши
 	void OnMouseUp() {
 		this.joint.enabled = false;
 	}
 
+	// Получает координаты мыши относительно мира
 	Vector3 GetMousePosition() {
-		//return new Vector3 (Input.GetAxis("Mouse X")- Camera.main.pixelRect.width/2, Input.GetAxis("Mouse Y") - Camera.main.pixelRect.height/2);
 		Vector3 p = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		return p;
 	}
 
-	// Update is called once per frame
+	// Обновление на каждом кадре
 	void Update () {
 		this.planet.transform.rotation = this.transform.rotation;
 
@@ -54,7 +56,6 @@ public class RotateManager : MonoBehaviour {
 		//lr.SetPosition (1, new Vector3(p2.x, p2.y, 0));
 		//lr.SetColors (new Color(1,0,0),new Color(1,0,0));
 		//lr.SetWidth (0.1f,0.1f);
-	
 	}
 
 }
