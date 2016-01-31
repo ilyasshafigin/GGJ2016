@@ -9,7 +9,6 @@ public class RotateManager : MonoBehaviour {
 	private float prevAngle;
 	//private GameObject line = null;
 
-
 	// Инициализация
 	void Start () {
 		this.joint = this.GetComponent<TargetJoint2D> ();

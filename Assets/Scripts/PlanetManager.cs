@@ -19,12 +19,16 @@ public class PlanetManager : MonoBehaviour {
 	private GrowManager[] grows;
 	// Массив эффектов взрыва
 	private ExplosionManager[] explosions;
+	//
+	private CometManager[] comets;
 	// Массив температур, максимум - 1
 	private float[] temps;
 	// Значение повышения температуры за один кадр
 	private float tempSpeed = 0.01f;
 	// Угол одного сетора
 	private float sectorAngle;
+	// 
+	private float scoreDeltaTime = 0.0f;
 
 	// Инициализация объекта
 	private void Start () {
@@ -32,6 +36,7 @@ public class PlanetManager : MonoBehaviour {
 		this.explosions = new ExplosionManager[this.count];
 		this.grows = new GrowManager[this.count];
 		this.temps = new float[this.count];
+		//this.comets = (CometManager[]) this.gameObject.GetComponentsInParent(typeof(CometManager));
 
 		this.sectorAngle = 360f / this.count;
 
@@ -153,6 +158,14 @@ public class PlanetManager : MonoBehaviour {
 			plant.SetTemp (Mathf.Clamp(this.temps[i], 0.0f, 1.0f));
 			plant.SetSun (sun[i]);
 		}
+
+		// Добавляем очки
+		this.scoreDeltaTime += Time.deltaTime;
+		if (this.scoreDeltaTime >= 1.0f) {
+			this.scoreDeltaTime = 0.0f;
+
+			GameManager.instance.AddScore (this.getTreeCount());
+		}
 	}
 
 	// Возвращает индекс ближайшего сектора к солнцу
@@ -162,6 +175,19 @@ public class PlanetManager : MonoBehaviour {
 			angle += 360;
 		int sector = (int) (angle / this.sectorAngle);
 		return sector;
+	}
+
+	// Получает количество деревьев
+	private int getTreeCount() {
+		int count = 0;
+		for (int i = 0; i < this.count; i++) {
+			PlantManager plant = this.plants [i];
+			if (plant.IsTree () && plant.state != PlantManager.State.DryingUpDone
+				&& plant.state != PlantManager.State.WithreingDone) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	// Событие распространения пожара от одного дерева
@@ -207,6 +233,22 @@ public class PlanetManager : MonoBehaviour {
 	//
 	public void OnGrow(int index) {
 		this.grows [index].Grow ();
+	}
+
+	public void SetPause(bool pause) {
+		this.enabled = !pause;
+		foreach (PlantManager plant in this.plants) {
+			plant.enabled = !pause;
+		}
+		foreach (ExplosionManager explosion in this.explosions) {
+			explosion.enabled = !pause;
+		}
+		foreach (GrowManager grow in this.grows) {
+			grow.enabled = !pause;
+		}
+		foreach (CometManager comet in this.comets) {
+			comet.enabled = !pause;
+		}
 	}
 
 }

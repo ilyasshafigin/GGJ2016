@@ -7,7 +7,7 @@ using System.Collections;
 public class PlantManager : MonoBehaviour {
 
 	// Префаб растения
-	public static Object prefab = Resources.Load ("Plant");
+	public static Object prefab = Resources.Load ("Prefabs/Plant");
 
 	// Типы растения: ничего, дерево, сорник
 	public enum Type {

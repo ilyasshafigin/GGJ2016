@@ -4,7 +4,7 @@ using System.Collections;
 public class ExplosionManager : MonoBehaviour {
 
 	// Префаб эффекта взрыва
-	public static Object prefab = Resources.Load ("Explosion");
+	public static Object prefab = Resources.Load ("Prefabs/Explosion");
 
 	// Прогресс взрыва от 0 до 1
 	private float exp = 0.0f;

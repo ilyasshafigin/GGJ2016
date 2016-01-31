@@ -4,7 +4,7 @@ using System.Collections;
 public class GrowManager : MonoBehaviour {
 
 	// Префаб эффекта полного роста
-	public static Object prefab = Resources.Load ("Grow");
+	public static Object prefab = Resources.Load ("Prefabs/Grow");
 
 	// Прогресс от 0 до 1
 	private float grow = 0.0f;
