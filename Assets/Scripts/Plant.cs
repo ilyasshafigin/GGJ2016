@@ -4,7 +4,7 @@ using System.Collections;
 /**
  * Класс управления состоянием растения 
  */
-public class PlantManager : MonoBehaviour {
+public class Plant : MonoBehaviour {
 
 	// Префаб растения
 	public static Object prefab = Resources.Load ("Prefabs/Plant");
@@ -14,9 +14,19 @@ public class PlantManager : MonoBehaviour {
 		None, Tree, Weed
 	}
 
-	// Состояния растения: ничего, рост, деление, увядание, увяло, засыхание, засохло, горит, сгорело
+	// Состояния растения
 	public enum State {
-		None, Growth, Divide, Withreing, WithreingDone, DryingUp, DryingUpDone, Burn, BurnDone, Explosion, Die
+		None, 			// ничего
+		Growth,			// рост
+		Divide,			// деление
+		Withreing,		// увядание
+		WithreingDone,	// увяло
+		DryingUp, 		// засыхание
+		DryingUpDone,	// засохло
+		Burn,			// горение
+		BurnDone,		// сгорело
+		Explosion,		// взрыв
+		Die				// умирание
 	}
 
 	// Тип растения
@@ -27,11 +37,11 @@ public class PlantManager : MonoBehaviour {
 	// Процесс роста от 0 до 1
 	public float growth = 0.0f;
 	// Скорость роста
-	public float growthSpeed = 0.1f;
+	public float growthSpeed = 0.15f;
 	// Процесс деления от 0 до 1
 	private float divide = 0.0f;
 	// Скорость деления
-	private float divideSpeed = 1f;
+	public float divideSpeed = 1f;
 	// Процесс увядания от 0 до 1
 	private float withering = 0.0f;
 	// Скорость увядания
@@ -43,20 +53,15 @@ public class PlantManager : MonoBehaviour {
 	// Процесс горения от 0 до 1
 	private float burn = 0.0f;
 	// Скорость горения
-	public float burnSpeed = 0.1f;
-	//
-	public float die = 0.0f;
-	//
+	public float burnSpeed = 0.15f;
+	// Прогресс умирания, необратим
+	private float die = 0.0f;
+	//	Скорость умирания
 	public float dieSpeed = 0.4f;
 	// Температура земли
 	private float temp = 0.0f;
 	// На солнечной стороне ли растение
 	private bool sun = false;
-
-	// Количество кадров роста
-	public int treeAnimFrames = 24;
-	// Количество кадров деления
-	public int divideAnimFrames = 7;
 
 	// Начальный цвет увядания
 	public Color witheringColorFrom = new Color(1.0f, 1.0f, 1.0f);
@@ -68,7 +73,7 @@ public class PlantManager : MonoBehaviour {
 	// Конечный цвет перегревания
 	public Color burnColorTo = new Color(1.0f, 0.3f, 0.3f);
 
-	private PlanetManager planet;
+	private Planet planet;
 	private int index;
 	private Animator animator;
 	private SpriteRenderer render;
@@ -86,7 +91,7 @@ public class PlantManager : MonoBehaviour {
 	}
 
 	// Метод инициализации при создании объекта из префаба
-	private void Initialize(PlanetManager planet, int index) {
+	private void Initialize(Planet planet, int index) {
 		this.planet = planet;
 		this.index = index;
 	}
@@ -175,7 +180,7 @@ public class PlantManager : MonoBehaviour {
 				}
 				// Устанавливаем кадр анимации
 				this.animator.Play ("GrowthTree", 0, this.growth);
-				this.render.color = Color.Lerp (this.witheringColorFrom, this.witheringColorTo, this.withering);
+				//this.render.color = Color.Lerp (this.witheringColorFrom, this.witheringColorTo, this.withering);
 				break;
 			}
 		// Если дерево еще растет
@@ -211,7 +216,7 @@ public class PlantManager : MonoBehaviour {
 					this.divide = 1.0f;
 					// Устанавляваем состояние засыхания
 					this.SetState (State.DryingUp);
-					//
+					// Запускаем событие
 					this.OnDivideDone();
 				}
 				// Управляем анимацией
@@ -297,12 +302,22 @@ public class PlantManager : MonoBehaviour {
 		default:
 			break;
 		}
-
-		// Если температура большая
-		if (this.temp >= 1.0f && this.state != State.Divide && this.state != State.Explosion && this.state != State.Die) {
-			// то устанавливаем состояние горения
-			this.SetState (State.Burn);
+			
+		if (this.state != State.Divide && this.state != State.Explosion && this.state != State.Die) {
+			// Если температура большая
+			if (this.temp >= 0.99f) {
+				// то устанавливаем состояние горения
+				this.SetState (State.Burn);
+			}
+			// Иначе, если температура низкая
+			else if (this.temp <= -0.5f) {
+				// то устанавливаем состояние увядания
+				this.SetState (State.Withreing);
+			}
 		}
+
+		// TODO debug
+		//this.render.color = Color.Lerp (Color.blue, Color.red, this.temp/2+0.5f);
 	}
 
 	// Событие начала роста
@@ -350,14 +365,17 @@ public class PlantManager : MonoBehaviour {
 	private void Divide() {
 		int count = 2;
 		while (count-- > 0) {
+			// Спауним Растение
 			this.planet.Spawn();
+			// Добавляем очки
+			GameManager.instance.AddScore(1);
 		}
 	}
 
 	// Создает объект растения из префаба
-	public static PlantManager CreatePlant(PlanetManager planet, int index) {
+	public static Plant CreatePlant(Planet planet, int index) {
 		GameObject gameObject = (GameObject) Object.Instantiate (prefab);
-		PlantManager plant = gameObject.GetComponent<PlantManager> ();
+		Plant plant = gameObject.GetComponent<Plant> ();
 		plant.Initialize (planet, index);
 		return plant;
 	}
