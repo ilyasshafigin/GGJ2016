@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RotateManager : MonoBehaviour {
 
-	public PlanetManager planet;
+	public Planet planet;
 
 	private TargetJoint2D joint;
 	private float prevAngle;
