@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21259684}
   - 114: {fileID: 11426632}
   - 95: {fileID: 9509820}
+  - 82: {fileID: 8229118}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -30,6 +31,80 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!82 &8229118
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130716}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &9509820
 Animator:
   serializedVersion: 3
@@ -70,6 +145,8 @@ MonoBehaviour:
   witheringColorTo: {r: 0.3, g: 0.3, b: 1, a: 1}
   burnColorFrom: {r: 1, g: 1, b: 1, a: 1}
   burnColorTo: {r: 1, g: 0.3, b: 0.3, a: 1}
+  growSound: {fileID: 8300000, guid: 8c5a955e20b8f034fbe58b937d8db87d, type: 3}
+  fireSound: {fileID: 8300000, guid: 3e8ff498e2635314b8cd01feebf43664, type: 3}
 --- !u!212 &21259684
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -172,6 +249,26 @@ Prefab:
       propertyPath: dieSpeed
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: growSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8c5a955e20b8f034fbe58b937d8db87d, type: 3}
+    - target: {fileID: 0}
+      propertyPath: fireSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e8ff498e2635314b8cd01feebf43664, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 130716}
