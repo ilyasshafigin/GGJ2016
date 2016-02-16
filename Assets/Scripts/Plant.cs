@@ -73,16 +73,21 @@ public class Plant : MonoBehaviour {
 	// Конечный цвет перегревания
 	public Color burnColorTo = new Color(1.0f, 0.3f, 0.3f);
 
+	public AudioClip growSound;
+	public AudioClip fireSound;
+
 	private Planet planet;
 	private int index;
 	private Animator animator;
 	private SpriteRenderer render;
+	private AudioSource audio;
 
 	// Метод инициализации
 	private void Awake () {
 		this.animator = this.GetComponent<Animator> ();
 		this.animator.speed = 0.0f;
 		this.render = this.GetComponent<SpriteRenderer> ();
+		this.audio = this.GetComponent<AudioSource> ();
 	}
 
 	// 
@@ -255,6 +260,8 @@ public class Plant : MonoBehaviour {
 						this.burn = 1.0f;
 						// то устанавливаем состояние полного сгорания
 						this.SetState (State.Die);
+						// Останавливаем звук
+						this.audio.Stop ();
 					}
 				}
 				// Иначе
@@ -266,6 +273,8 @@ public class Plant : MonoBehaviour {
 						this.burn = 0.0f;
 						// Устанавливаем состояние роста
 						this.SetState (State.Growth);
+						// Останавливаем звук
+						this.audio.Stop ();
 					}
 				}
 
@@ -327,6 +336,12 @@ public class Plant : MonoBehaviour {
 
 	// Событие окончания роста и деления дерева
 	public void OnDivide() {
+		// Запускаем звук
+		this.audio.Stop ();
+		this.audio.loop = false;
+		this.audio.clip = this.growSound;
+		this.audio.Play ();
+
 		this.planet.OnGrow (this.index);
 	}
 
@@ -346,8 +361,15 @@ public class Plant : MonoBehaviour {
 	}
 
 	public void OnBurn() {
-		if (this.state != State.Die)
+		if (this.state != State.Die) {
 			this.SetState (State.Burn);
+
+			// Запускаем звук
+			this.audio.Stop ();
+			this.audio.loop = true;
+			this.audio.clip = this.fireSound;
+			this.audio.Play ();
+		}
 	}
 
 	// Событие распространения пожара

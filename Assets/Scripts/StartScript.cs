@@ -3,8 +3,10 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class StartScript : MonoBehaviour {
+	
 	private float delTime=0;
 	public float maxTime;
+
 	// Use this for initialization
 	void Start () {
 	

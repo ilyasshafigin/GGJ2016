@@ -59,7 +59,7 @@ public class Comet : MonoBehaviour {
 			// Запускаем событие
 			planet.OnComet(this.angle, this.size);
 			// Запускаем звук
-			this.GetComponent<AudioSource> ().PlayOneShot (this.GetComponent<AudioSource>().clip, 1.0f);
+			this.GetComponent<AudioSource> ().Play ();
 			// Деактивируем комету
 			Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
 			body.velocity = Vector2.zero;
