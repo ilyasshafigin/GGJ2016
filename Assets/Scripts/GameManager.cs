@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
+    public CameraManager camera;
 
 	// Очки за игру
 	public int score = 0;
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour {
 	//
 	public bool gameOver = false;
 
-	public PlanetManager planet;
+	public Planet planet;
 	public Text text;
 
 	// 
@@ -36,12 +37,12 @@ public class GameManager : MonoBehaviour {
 
 	//
 	public void SetPause(bool pause) {
-		this.planet.SetPause (pause);
+		
 	}
 		
 	//
 	public void GameOver() {
-		SceneManager.LoadScene ("scene00");
+		this.camera.GameOverInCamera();
 	}
 
 }
