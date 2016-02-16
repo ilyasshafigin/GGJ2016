@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CometManager : MonoBehaviour {
-
+public class Comet : MonoBehaviour {
 
 	// Минимальное время респауна
 	public float minTimeSpawn = 3;
@@ -19,16 +18,14 @@ public class CometManager : MonoBehaviour {
 	private float elapsedTime;
 	private float deltaTime;
 
-	public AudioClip clip;
-
 	// Инициализация
 	void Start () {
 		this.elapsedTime = Random.Range (this.minTimeSpawn, this.maxTimeSpawn);
 		this.deltaTime = 0.0f;
 	}
-	
-	// Обновление на каждом кадру
-	void Update () {
+
+	// Обновление на каждом кадру из менеджера эффектов
+	public void UpdateComet (float deltaTime) {
 		this.deltaTime += Time.deltaTime;
 		if (this.deltaTime >= this.elapsedTime) {
 			this.elapsedTime = Random.Range (this.minTimeSpawn, this.maxTimeSpawn);
@@ -41,6 +38,9 @@ public class CometManager : MonoBehaviour {
 
 	// Респаун кометы
 	private void Spawn() {
+		// Активируем комету
+		this.gameObject.SetActive (true);
+
 		// Устанавливаем угол прилета кометы
 		this.angle = Random.Range (0, 360);
 		this.transform.position =  new Vector3 (this.radius*Mathf.Cos(angle * Mathf.Deg2Rad), this.radius*Mathf.Sin(angle * Mathf.Deg2Rad), 0);
@@ -54,16 +54,17 @@ public class CometManager : MonoBehaviour {
 	// Событие столкновения кометы с объектами
 	private void OnTriggerEnter2D(Collider2D collider) {
 		// Если комента столкнулась с планетой
-		PlanetManager planet = collider.GetComponent<PlanetManager>();
+		Planet planet = collider.GetComponent<Planet>();
 		if (planet != null) {
 			// Запускаем событие
 			planet.OnComet(this.angle, this.size);
-			//
-			this.GetComponent<AudioSource> ().PlayOneShot (this.clip, 1.0f);
+			// Запускаем звук
+			this.GetComponent<AudioSource> ().PlayOneShot (this.GetComponent<AudioSource>().clip, 1.0f);
 			// Деактивируем комету
 			Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
 			body.velocity = Vector2.zero;
-			this.transform.position =  new Vector3 (-10, 0, 0);
+			//this.transform.position =  new Vector3 (-10, 0, 0);
+			this.gameObject.SetActive (false);
 		}
 	}
 }
