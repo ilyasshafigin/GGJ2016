@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FallingStarManager : MonoBehaviour {
+public class FallingStar : MonoBehaviour {
 
 	private Animator animator;
 
@@ -55,8 +55,6 @@ public class FallingStarManager : MonoBehaviour {
 		float fromY = Random.Range (-1, 1);
 		float toX = -fromX;
 		float toY = Random.Range (-4, 4);
-
-		Debug.Log (toX + " " + toY);
 
 		this.from = new Vector3 (fromX, fromY, 0);
 		this.to = new Vector3 (toX, toY, 0);
