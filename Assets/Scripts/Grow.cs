@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GrowManager : MonoBehaviour {
+public class Grow : MonoBehaviour {
 
 	// Префаб эффекта полного роста
 	public static Object prefab = Resources.Load ("Prefabs/Grow");
@@ -11,8 +11,8 @@ public class GrowManager : MonoBehaviour {
 	// Скорость
 	public float growSpeed = 1f;
 
-	// 
-	private PlanetManager planet;
+	// Планета
+	private Planet planet;
 	// Аниматор
 	private Animator animator;
 
@@ -26,7 +26,7 @@ public class GrowManager : MonoBehaviour {
 	}
 
 	// Инициализация при создании префаба
-	private void Initialize(PlanetManager planet) {
+	private void Initialize(Planet planet) {
 		this.planet = planet;
 	}
 		
@@ -36,7 +36,7 @@ public class GrowManager : MonoBehaviour {
 	}
 
 	//
-	public void Grow() {
+	public void OnGrow() {
 		this.grow = 0.0f;
 		this.gameObject.SetActive (true);
 	}
@@ -47,7 +47,7 @@ public class GrowManager : MonoBehaviour {
 		// Если взрыв закончился
 		if (this.grow >= 1.0f) {
 			this.grow = 1.0f;
-			//
+			// Делаем объект неактивным
 			this.gameObject.SetActive(false);
 		}
 		// Управляем анимацией
@@ -56,9 +56,9 @@ public class GrowManager : MonoBehaviour {
 
 
 	// Создает объект эффекта
-	public static GrowManager CreateGrow(PlanetManager planet) {
+	public static Grow CreateGrow(Planet planet) {
 		GameObject gameObject = (GameObject) Object.Instantiate (prefab);
-		GrowManager grow = gameObject.GetComponent<GrowManager> ();
+		Grow grow = gameObject.GetComponent<Grow> ();
 		grow.Initialize (planet);
 		return grow;
 	}
