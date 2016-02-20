@@ -47,7 +47,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Spatialize: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -269,6 +269,10 @@ Prefab:
       propertyPath: fireSound
       value: 
       objectReference: {fileID: 8300000, guid: 3e8ff498e2635314b8cd01feebf43664, type: 3}
+    - target: {fileID: 0}
+      propertyPath: Priority
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 130716}
