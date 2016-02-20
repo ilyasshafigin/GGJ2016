@@ -47,18 +47,8 @@ public class Planet : MonoBehaviour {
 
 			this.temps [i] = 0.0f;
 		}
-
-		// Запускаем спаун первых растений
-		int count = 2;
-		while(count-- > 0) {
-			Plant plant = this.Spawn ();
-			if (plant != null) {
-				// Изначально, дерево выросло на половину
-				plant.SetGrowth (0.5f);
-			}
-		}
 	}
-
+		
 	// Спаунит растение на свободном сеторе
 	public Plant Spawn() {
 		List<int> sectors = this.GetAvaliableSectors ();
@@ -93,6 +83,9 @@ public class Planet : MonoBehaviour {
 	
 	// Обновление объекта на каждом кадре
 	private void Update () {
+		if (GameManager.instance.IsGameOver ())
+			return;
+
 		int near = this.GetNearSector ();
 		int far = near + this.count / 2;
 		if (far >= this.count)
@@ -209,6 +202,31 @@ public class Planet : MonoBehaviour {
 	//
 	public void OnGrow(int index) {
 		this.effects.OnGrow (index);
+	}
+
+	// Событие запуска игры
+	public void OnStartGame() {
+		foreach (Plant plant in this.plants) {
+			plant.OnStartGame ();
+		}
+
+		// Запускаем спаун первых растений
+		int count = 2;
+		while(count-- > 0) {
+			Plant plant = this.Spawn ();
+			if (plant != null) {
+				// Изначально, дерево выросло на половину
+				plant.SetGrowth (0.5f);
+			}
+		}
+	}
+
+	// Событие окончания игры
+	public void OnGameOver() {
+		for (int i = 0; i < this.count; i++) {
+			this.plants [i].OnGameOver ();
+			this.temps [i] = 0.0f;
+		}
 	}
 
 }

@@ -8,24 +8,19 @@ public class DestroyByBoundary : MonoBehaviour {
     public float timeSpawn;
 
     private float time;
-//    private List<GameObject> ml = new List<GameObject>();
 
-    void Start()
-    {
+    void Start() {
         time = timeSpawn;
     }
 
-    void OnTrigerExit(Collider other)
-    {
+    void OnTrigerExit(Collider other) {
         //Destroy(other.gameObject);
     }
 
-    void Update()
-    {
-        if (time < timeSpawn)
-            time += Time.deltaTime;
-        else
-        {
+    void Update() {
+		if (time < timeSpawn) {
+			time += Time.deltaTime;
+		} else {
             //if (transform.position.x >= 25)
             //    transform.Translate(new Vector3(-22, 0, 0));
             //transform.position = Vector3.Lerp(transform.position, new Vector3(1, 0, 0), 0.001f);

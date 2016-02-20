@@ -17,13 +17,12 @@ public class TemperatureLigth : MonoBehaviour {
 
 	// Текущая температура
 	private float temp = 0;
-
-	// Use this for initialization
-	void Start () {
-	}
 	
-	// Update is called once per frame
+	// 
 	void Update () {
+		if (GameManager.instance.IsGameOver ())
+			return;
+		
 		if (this.temp > 0) {
 			this.GetComponent<Light> ().color = this.heatColor;
 		} else {
@@ -36,6 +35,16 @@ public class TemperatureLigth : MonoBehaviour {
 	//
 	public void SetTemperature(float temp) {
 		this.temp = temp;
+	}
+
+	// Событие запуска игры
+	public void OnStartGame() {
+
+	}
+
+	// Событие окончания игры
+	public void OnGameOver() {
+
 	}
 
 	// Создает объект

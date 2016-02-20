@@ -16,9 +16,6 @@ public class Explosion : MonoBehaviour {
 	// Аниматор
 	private Animator animator;
 
-	// Количество каждов анимации
-	public int animFrames = 16; 
-
 	// Инициализация
 	private void Awake () {
 		this.animator = this.GetComponent<Animator> ();
@@ -35,12 +32,6 @@ public class Explosion : MonoBehaviour {
 		this.animator.Play ("Explosion", 0, progress);
 	}
 
-	//
-	public void OnExplosion() {
-		this.exp = 0.0f;
-		this.gameObject.SetActive (true);
-	}
-
 	private void Update() {
 		// Увеличиваем прогресс
 		this.exp += this.expSpeed * Time.deltaTime;
@@ -52,6 +43,22 @@ public class Explosion : MonoBehaviour {
 		}
 		// Управляем анимацией
 		this.SetProgress (this.exp);
+	}
+
+	//
+	public void OnExplosion() {
+		this.exp = 0.0f;
+		this.gameObject.SetActive (true);
+	}
+
+	// Событие запуска игры
+	public void OnStartGame() {
+
+	}
+
+	// Событие окончания игры
+	public void OnGameOver() {
+
 	}
 
 	// Создает объект эффекта

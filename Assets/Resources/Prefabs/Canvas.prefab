@@ -116,7 +116,7 @@ GameObject:
   - 223: {fileID: 22390438}
   - 114: {fileID: 11473838}
   - 114: {fileID: 11424800}
-  - 114: {fileID: 11461636}
+  - 114: {fileID: 11454752}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11461636}
+      - m_Target: {fileID: 0}
         m_MethodName: RestartPress
         m_Mode: 1
         m_Arguments:
@@ -300,6 +300,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11454752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb84b17fda3b5ed44a57270e68cd4fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumeBut: {fileID: 0}
+  restartBut: {fileID: 0}
+  pauseBut: {fileID: 0}
+  panelWithPause: {fileID: 0}
+  panelWithResume: {fileID: 0}
 --- !u!114 &11461516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,7 +355,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11461636}
+      - m_Target: {fileID: 0}
         m_MethodName: ResumePress
         m_Mode: 1
         m_Arguments:
@@ -352,22 +368,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &11461636
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb84b17fda3b5ed44a57270e68cd4fee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resumeBut: {fileID: 11461516}
-  restartBut: {fileID: 11407670}
-  pauseBut: {fileID: 11463464}
-  panelWithPause: {fileID: 123698}
-  pausePan2: {fileID: 182686}
 --- !u!114 &11463464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11461636}
+      - m_Target: {fileID: 0}
         m_MethodName: PausePress
         m_Mode: 1
         m_Arguments:

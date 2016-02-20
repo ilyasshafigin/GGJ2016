@@ -14,41 +14,34 @@ public class Comet : MonoBehaviour {
 	// Размер кометы в секторах
 	public int size = 1;
 
+	// Угол прилета кометы
 	private float angle;
-	private float elapsedTime;
-	private float deltaTime;
 
-	// Инициализация
-	void Start () {
-		this.elapsedTime = Random.Range (this.minTimeSpawn, this.maxTimeSpawn);
-		this.deltaTime = 0.0f;
-	}
+	//
+	private IEnumerator SpawnLoop() {
+		// Задержка между респаунами кометы
+		yield return new WaitForSeconds (Random.Range (this.minTimeSpawn, this.maxTimeSpawn));
 
-	// Обновление на каждом кадру из менеджера эффектов
-	public void UpdateComet (float deltaTime) {
-		this.deltaTime += Time.deltaTime;
-		if (this.deltaTime >= this.elapsedTime) {
-			this.elapsedTime = Random.Range (this.minTimeSpawn, this.maxTimeSpawn);
-			this.deltaTime = 0.0f;
-
-			// Спауним комету
-			this.Spawn ();
+		if (!GameManager.instance.IsGameOver ()) {
+			Spawn ();
+		
+			StartCoroutine(SpawnLoop ());
 		}
 	}
 
 	// Респаун кометы
 	private void Spawn() {
 		// Активируем комету
-		this.gameObject.SetActive (true);
+		this.Show ();
 
 		// Устанавливаем угол прилета кометы
 		this.angle = Random.Range (0, 360);
-		this.transform.position =  new Vector3 (this.radius*Mathf.Cos(angle * Mathf.Deg2Rad), this.radius*Mathf.Sin(angle * Mathf.Deg2Rad), 0);
-		this.transform.rotation = Quaternion.AngleAxis(angle+90, Vector3.forward);
+		this.transform.position = new Vector3 (this.radius * Mathf.Cos (angle * Mathf.Deg2Rad), this.radius * Mathf.Sin (angle * Mathf.Deg2Rad), 0);
+		this.transform.rotation = Quaternion.AngleAxis (angle + 90, Vector3.forward);
 
 		Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
 		body.velocity = Vector2.zero;
-		body.AddForce (new Vector2(-Mathf.Cos(angle * Mathf.Deg2Rad), -Mathf.Sin(angle * Mathf.Deg2Rad)) * this.force);
+		body.AddForce (new Vector2 (-Mathf.Cos (angle * Mathf.Deg2Rad), -Mathf.Sin (angle * Mathf.Deg2Rad)) * this.force);
 	}
 
 	// Событие столкновения кометы с объектами
@@ -63,8 +56,31 @@ public class Comet : MonoBehaviour {
 			// Деактивируем комету
 			Rigidbody2D body = this.GetComponent<Rigidbody2D> ();
 			body.velocity = Vector2.zero;
-			//this.transform.position =  new Vector3 (-10, 0, 0);
-			this.gameObject.SetActive (false);
+			//
+			this.Hide();
 		}
 	}
+
+	// Показывает объект
+	private void Show() {
+		this.GetComponent<SpriteRenderer> ().enabled = true;
+		this.GetComponent<CircleCollider2D> ().enabled = true;
+	}
+
+	// Скрывает объект
+	private void Hide() {
+		this.GetComponent<SpriteRenderer> ().enabled = false;
+		this.GetComponent<CircleCollider2D> ().enabled = false;
+	}
+
+	// Событие запуска игры
+	public void OnStartGame() {
+		this.StartCoroutine (this.SpawnLoop());
+	}
+
+	// Событие окончания игры
+	public void OnGameOver() {
+		this.Hide ();
+	}
+		
 }

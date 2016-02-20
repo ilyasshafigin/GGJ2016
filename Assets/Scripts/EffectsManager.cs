@@ -15,8 +15,10 @@ public class EffectsManager  : MonoBehaviour {
 	private Explosion[] explosions;
 	// Массив комет
 	private Comet[] comets;
-	// 
+	// Массив источников света
 	private TemperatureLigth[] lights;
+	// Массив пролетающих метеоритов
+	private FallingStar[] stars;
 
 	// Инициализация
 	private void Start() {
@@ -26,6 +28,7 @@ public class EffectsManager  : MonoBehaviour {
 		this.explosions = new Explosion[count];
 		this.grows = new Grow[count];
 		this.comets = (Comet[]) this.GetComponentsInChildren<Comet>(true);
+		this.stars = (FallingStar[]) this.GetComponentsInChildren<FallingStar>(true);
 		this.lights = new TemperatureLigth[count];
 
 		for (int i = 0; i < count; i++) {
@@ -61,10 +64,9 @@ public class EffectsManager  : MonoBehaviour {
 
 	// Обновение на каждом каждре
 	private void Update() {
-		foreach (Comet comet in this.comets) {
-			comet.UpdateComet (Time.deltaTime);
-		}
-
+		if (GameManager.instance.IsGameOver ())
+			return;
+		
 		for (int i = 0; i < this.planet.count; i++) {
 			this.lights [i].SetTemperature (this.planet.GetTemperature(i));
 		}
@@ -101,6 +103,34 @@ public class EffectsManager  : MonoBehaviour {
 	//
 	public void OnGrow(int sector) {
 		this.grows [sector].OnGrow ();
+	}
+
+	// Событие запуска игры
+	public void OnStartGame() {
+		foreach (Comet comet in this.comets)
+			comet.OnStartGame ();
+		foreach (FallingStar star in this.stars)
+			star.OnStartGame ();
+		foreach (Grow grow in this.grows)
+			grow.OnStartGame ();
+		foreach (Explosion explosion in this.explosions)
+			explosion.OnStartGame ();
+		foreach (TemperatureLigth light in this.lights)
+			light.OnStartGame ();
+	}
+
+	// Событие окончания игры
+	public void OnGameOver() {
+		foreach (Comet comet in this.comets)
+			comet.OnGameOver ();
+		foreach (FallingStar star in this.stars)
+			star.OnGameOver ();
+		foreach (Grow grow in this.grows)
+			grow.OnGameOver ();
+		foreach (Explosion explosion in this.explosions)
+			explosion.OnGameOver ();
+		foreach (TemperatureLigth light in this.lights)
+			light.OnGameOver ();
 	}
 
 }

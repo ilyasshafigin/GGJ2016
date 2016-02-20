@@ -80,19 +80,12 @@ public class Plant : MonoBehaviour {
 	private int index;
 	private Animator animator;
 	private SpriteRenderer render;
-	private AudioSource audio;
 
 	// Метод инициализации
 	private void Awake () {
 		this.animator = this.GetComponent<Animator> ();
 		this.animator.speed = 0.0f;
 		this.render = this.GetComponent<SpriteRenderer> ();
-		this.audio = this.GetComponent<AudioSource> ();
-	}
-
-	// 
-	private void Start() {
-
 	}
 
 	// Метод инициализации при создании объекта из префаба
@@ -104,7 +97,11 @@ public class Plant : MonoBehaviour {
 	// Устанавливает тип растению
 	public void SetType(Type type) {
 		this.type = type;
-		this.gameObject.SetActive (type != Type.None);
+		if (this.IsNone()) {
+			this.Hide ();
+		} else {
+			this.Show ();
+		}
 	}
 
 	// Устанавивает состояние
@@ -115,14 +112,17 @@ public class Plant : MonoBehaviour {
 		}
 	}
 
+	//
 	public bool IsNone() {
 		return this.type == Type.None;
 	}
 
+	//
 	public bool IsTree() {
 		return this.type == Type.Tree;
 	}
 
+	//
 	public bool IsWeed() {
 		return this.type == Type.Weed;
 	}
@@ -149,9 +149,11 @@ public class Plant : MonoBehaviour {
 
 	// Обновляет состояние растения
 	private void UpdateState() {
-		if (this.type == Type.None) {
+		if (this.IsNone())
 			return;
-		}
+
+		if (GameManager.instance.IsGameOver ())
+			return;
 
 		switch (this.state) {
 		// Если дерево вянет
@@ -261,7 +263,7 @@ public class Plant : MonoBehaviour {
 						// то устанавливаем состояние полного сгорания
 						this.SetState (State.Die);
 						// Останавливаем звук
-						this.audio.Stop ();
+						this.GetComponent<AudioSource> ().Stop ();
 					}
 				}
 				// Иначе
@@ -274,7 +276,7 @@ public class Plant : MonoBehaviour {
 						// Устанавливаем состояние роста
 						this.SetState (State.Growth);
 						// Останавливаем звук
-						this.audio.Stop ();
+						this.GetComponent<AudioSource> ().Stop ();
 					}
 				}
 
@@ -314,12 +316,13 @@ public class Plant : MonoBehaviour {
 			
 		if (this.state != State.Divide && this.state != State.Explosion && this.state != State.Die) {
 			// Если температура большая
-			if (this.temp >= 0.99f) {
+			if (this.temp >= 0.99f && this.state != State.Burn) {
 				// то устанавливаем состояние горения
-				this.SetState (State.Burn);
+				//this.SetState (State.Burn);
+				this.OnBurn();
 			}
 			// Иначе, если температура низкая
-			else if (this.temp <= -0.5f) {
+			else if (this.temp <= -0.5f && this.state != State.Withreing) {
 				// то устанавливаем состояние увядания
 				this.SetState (State.Withreing);
 			}
@@ -336,11 +339,12 @@ public class Plant : MonoBehaviour {
 
 	// Событие окончания роста и деления дерева
 	public void OnDivide() {
+		AudioSource audio = this.GetComponent<AudioSource> ();
 		// Запускаем звук
-		this.audio.Stop ();
-		this.audio.loop = false;
-		this.audio.clip = this.growSound;
-		this.audio.Play ();
+		audio.Stop ();
+		audio.loop = false;
+		audio.clip = this.growSound;
+		audio.Play ();
 
 		this.planet.OnGrow (this.index);
 	}
@@ -357,19 +361,27 @@ public class Plant : MonoBehaviour {
 
 	// Событие столкновения с кометой
 	public void OnComet() {
+		// Останавливаем звук
+		this.GetComponent<AudioSource> ().Stop ();
+		// Устанавливаем состояние
 		this.SetType (Type.None);
 	}
 
+	// Событие загорания
 	public void OnBurn() {
-		if (this.state != State.Die) {
-			this.SetState (State.Burn);
+		if (this.IsNone ())
+			return;
+		if (this.state == State.Die)
+			return;
 
-			// Запускаем звук
-			this.audio.Stop ();
-			this.audio.loop = true;
-			this.audio.clip = this.fireSound;
-			this.audio.Play ();
-		}
+		this.SetState (State.Burn);
+
+		// Запускаем звук
+		AudioSource audio = this.GetComponent<AudioSource> ();
+		audio.Stop ();
+		audio.loop = true;
+		audio.clip = this.fireSound;
+		audio.Play ();
 	}
 
 	// Событие распространения пожара
@@ -379,8 +391,23 @@ public class Plant : MonoBehaviour {
 
 	//
 	public void OnDieDone() {
+		// Останавливаем звук
+		this.GetComponent<AudioSource> ().Stop ();
 		// Удаляем дерево
 		this.SetType (Type.None);
+	}
+
+	// Событие запуска игры
+	public void OnStartGame() {
+
+	}
+
+	// Событие окончания игры
+	public void OnGameOver() {
+		this.SetTemp (0);
+		this.SetType (Plant.Type.None);
+		this.SetGrowth (0);
+		this.SetState (Plant.State.None);
 	}
 
 	// Делит растение на еще два
@@ -392,6 +419,16 @@ public class Plant : MonoBehaviour {
 			// Добавляем очки
 			GameManager.instance.AddScore(1);
 		}
+	}
+
+	// Показывает объект
+	private void Show() {
+		this.GetComponent<SpriteRenderer> ().enabled = true;
+	}
+
+	// Скрывает объект
+	private void Hide() {
+		this.GetComponent<SpriteRenderer> ().enabled = false;
 	}
 
 	// Создает объект растения из префаба
