@@ -14,11 +14,8 @@ public class PauseMenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		resumeBut = resumeBut.GetComponent<Button>();
-		restartBut = restartBut.GetComponent<Button> ();
-		pauseBut = pauseBut.GetComponent<Button> ();
-		panelWithPause.SetActive (false);
-		panelWithResume.SetActive (false);
+		//panelWithPause.SetActive (false);
+		//panelWithResume.SetActive (false);
 		paused = false;
 	}
 

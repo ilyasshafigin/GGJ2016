@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
 		//this.menuScreen.SetActive(true);
 		//this.gameScreen.SetActive(false);
 		//this.gameOverScreen.SetActive(false);
-		this.pauseMenu.enabled = false;
+		this.pauseMenu.gameObject.SetActive(false);
 		this.audioSource = this.GetComponent<AudioSource> ();
 	}
 	
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour {
 		this.menuScreen.SetActive(false);
 		this.gameOverScreen.SetActive (false);
 		this.gameScreen.SetActive(true);
-		this.pauseMenu.enabled = true;
+		this.pauseMenu.gameObject.SetActive (true);
 
 		// Запускаем звук
 		this.audioSource.loop = false;
@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour {
 		this.menuScreen.SetActive(false);
 		this.gameOverScreen.SetActive (true);
 		this.gameScreen.SetActive(false);
-		this.pauseMenu.enabled = false;
+		this.pauseMenu.gameObject.SetActive (false);
 
 		// Запускаем звук
 		this.audioSource.loop = false;
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour {
 		this.menuScreen.SetActive(true);
 		this.gameOverScreen.SetActive (false);
 		this.gameScreen.SetActive(false);
-		this.pauseMenu.enabled = false;
+		this.pauseMenu.gameObject.SetActive (false);
 
 		// Запускаем звук
 		this.audioSource.loop = false;
